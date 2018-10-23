@@ -7,13 +7,12 @@ using TariffComparison.Models;
 
 namespace TariffComparison.Services
 {
-    sealed class ProductService
+    public sealed class ProductService
     {
         private static List<Product> productChoices { get; set;} = new List<Product>();
         private static List<CreatedProduct> createdProducts { get; set;} = new List<CreatedProduct>();
-        public ProductService()
+        public ProductService(string filepath)
         {
-            string filepath = "../../../products.json";
             string result = string.Empty;
             using (StreamReader r = new StreamReader(filepath))
             {
@@ -38,13 +37,13 @@ namespace TariffComparison.Services
             var consumption = Convert.ToDecimal(Console.ReadLine());
             var newProduct = CreateProduct(productNumber, consumption);
             createdProducts.Add(newProduct);
-            Console.WriteLine("Your product has annual costs {0}", newProduct.AnnualCosts);
+            Console.WriteLine("Your product has annual costs {0} euro/year", newProduct.AnnualCosts);
         }
 
         public void OutputProducts()
         {
             Console.WriteLine(new string('-', 73));
-            Console.WriteLine(String.Format("|{0,35}|{1,35}|", "Tariff name", "Annual costs (€/year)"));
+            Console.WriteLine(String.Format("|{0,35}|{1,35}|", "Tariff name", "Annual costs (euro/year)"));
             Console.WriteLine(new string('-', 73));
             foreach(var el in createdProducts.OrderBy(product => product.AnnualCosts))
             {
@@ -53,7 +52,7 @@ namespace TariffComparison.Services
             Console.WriteLine(new string('-', 73));
         }
 
-        private CreatedProduct CreateProduct(int productNumber, decimal consumption)
+        public CreatedProduct CreateProduct(int productNumber, decimal consumption)
         {
             var newProduct = new CreatedProduct(productChoices[productNumber].Name);
             decimal annualCosts = productChoices[productNumber].BaseCostPerYear;

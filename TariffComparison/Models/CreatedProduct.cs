@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TariffComparison.Models
 {
-    class CreatedProduct
+    public class CreatedProduct
     {
         public readonly string TariffName;
         public decimal AnnualCosts {get; set;}

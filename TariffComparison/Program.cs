@@ -7,7 +7,7 @@ namespace TariffComparison
     {
         static void Main(string[] args)
         {
-            var service = new ProductService();
+            var service = new ProductService("../../../products.json");
             bool keep = true;
             Console.WriteLine("Tariff Comparsion.");
             while (keep)
