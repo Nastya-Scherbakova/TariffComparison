@@ -1,4 +1,5 @@
 ﻿using System;
+using TariffComparison.Services;
 
 namespace TariffComparison
 {
@@ -6,7 +7,34 @@ namespace TariffComparison
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var service = new ProductService();
+            bool keep = true;
+            Console.WriteLine("Tariff Comparsion.");
+            while (keep)
+            {
+                Console.WriteLine("Please, enter a number of statement that what you want to do or any another key to exit and press 'enter': \n1. Create product \n2. See products list");
+                string number = Console.ReadLine();
+                switch (number)
+                {
+                    case "1":
+                        {
+                            service.AddProduct();
+                            break;
+                        }
+                    case "2":
+                        {
+                            service.OutputProducts();
+                            break;
+                        }
+                    default:
+                        {
+                            keep = false;
+                            break;
+                        }
+                }
+            }
+
         }
+
     }
 }

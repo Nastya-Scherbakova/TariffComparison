@@ -1,0 +1,26 @@
+{
+  "products": [
+    {
+      "name": "Basic electricity tariff",
+      "baseCostPerYear": 60,
+      "limits": [
+        {
+          "kWhPerYear": 0,
+          "addition": 0.22
+        }
+      ]
+    },
+     {
+      "name": "Packaged  tariff",
+      "baseCostPerYear": 800,
+      "limits": [
+        {
+          "kWhPerYear": 4000,
+          "addition": 0.3
+        }
+      ]
+    }
+
+  ]
+
+}
